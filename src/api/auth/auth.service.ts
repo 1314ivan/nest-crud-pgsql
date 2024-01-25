@@ -31,7 +31,7 @@ export class AuthService {
     }
     return this.loginWithCredentials(user)
   }
-  async loginWithCredentials(user) {
+  private async loginWithCredentials(user) {
     const payload = { email: user.email, sub: user.id }
 
     return {
