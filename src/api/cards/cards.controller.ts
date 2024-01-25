@@ -7,7 +7,7 @@ import { Cards } from 'src/db/entities/cards.entity'
 import { CardsService } from './cards.service'
 import { cardsCrud } from './cards.crud'
 
-@ApiBearerAuth()
+
 @Controller('columns/:columnsId/cards')
 @ApiTags('cards')
 @Crud(cardsCrud)

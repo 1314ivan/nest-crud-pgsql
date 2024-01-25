@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm'
-import { BaseEntity } from './base-entity'
+import { BaseEntity } from '../base-entity'
 import { ApiProperty } from '@nestjs/swagger'
 import { Users } from './users.entity'
 import { Cards } from './cards.entity'
@@ -18,13 +18,14 @@ export class Columns extends BaseEntity {
   @ManyToOne(() => Users, user => user.columns, {
     cascade: true,
     onDelete: 'SET NULL',
+    nullable: true,
     lazy: true
   })
   creator: () => Users
 
-  @Column()
+  @ApiProperty({ example: 12, description: 'ID создателя' })
+  @Column({nullable:true})
   creatorId: number
-
 
   // @ApiProperty({ description: 'Карточки' })
   @OneToMany(() => Cards, cards => cards.column)

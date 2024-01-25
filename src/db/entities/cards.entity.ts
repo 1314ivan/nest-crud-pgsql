@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm'
-import { BaseEntity } from './base-entity'
+import { BaseEntity } from '../base-entity'
 import { ApiProperty } from '@nestjs/swagger'
 import { Users } from './users.entity'
 import { Columns } from './columns.entity'
@@ -24,6 +24,7 @@ export class Cards extends BaseEntity {
   })
   creator: () => Users
 
+  @ApiProperty({ example: 12, description: 'ID создателя' })
   @Column({ nullable: true })
   creatorId: number
 
@@ -36,6 +37,7 @@ export class Cards extends BaseEntity {
   })
   column: () => Columns
 
+  @ApiProperty({ example: 32, description: 'ID колонки' })
   @Column({ nullable: true })
   columnId: number
 

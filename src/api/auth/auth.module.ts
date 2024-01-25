@@ -13,8 +13,7 @@ import { JwtModule } from '@nestjs/jwt'
     UsersModule,
     PassportModule,
     JwtModule.register({
-      secret: jwtConstants.secret,
-      
+      secret: jwtConstants.secret
     })
   ]
 })

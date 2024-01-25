@@ -29,7 +29,7 @@ export class AuthService {
     }
 
     const passwordIsOk = await user.checkPassword(dto.password)
-    if (passwordIsOk) {
+    if (!passwordIsOk) {
       throw new UnauthorizedException('Неверный пароль')
     }
     return this.loginWithCredentials(user)
@@ -38,7 +38,7 @@ export class AuthService {
     const payload = { email: user.email, sub: user.id }
 
     return {
-      access_token: this.jwtTokenService.sign(payload)
+      Authorization: this.jwtTokenService.sign(payload)
     }
   }
 }
